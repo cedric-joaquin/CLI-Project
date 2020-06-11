@@ -1,15 +1,15 @@
 class Product
     attr_accessor :styles
-    attr_reader :name, :sizes, :category
+    attr_reader :name, :sizes, :category, :price
     @@all = []
 
-    def initialize(name, category)
+    def initialize(name, category, price)
         @name = name
         @category = category
+        @price = price
         @styles = []
         @@all << self
     end
-
 
     def add_style(style)
         @styles << style
