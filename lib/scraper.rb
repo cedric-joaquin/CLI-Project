@@ -30,15 +30,20 @@ class Scraper
         products.each do |prod|
             name = prod.css("div.product-name").text
             name = prod.css("div.product-name").text
-            style = prod.css("div.product-style").text
+            
             link = prod.css("div.product-style a").attr("href").value
             link = link.gsub("/shop","")
 
             doc = Nokogiri::HTML(open(@@url + link))
             sizes = doc.css("div#cctrl select option").collect{|options| options.text}
+        
+            style = {
+                prod.css("div.product-style").text.to_sym => sizes,
+                :link => link
+            }
 
             Product.new(name, category) unless Product.products.include?(name) || prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
-            Product.all.detect{|product| product.name == name}.add_style(style,link,sizes) unless prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
+            Product.all.detect{|product| product.name == name}.add_style(style) unless prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
         end
         Product.sort
     end

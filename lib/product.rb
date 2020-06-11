@@ -11,12 +11,8 @@ class Product
     end
 
 
-    def add_style(style, link, sizes)
-        @styles << {
-            :style => style,
-            :link => link,
-            :sizes => sizes
-        }
+    def add_style(style)
+        @styles << style
     end
 
     def self.sort
