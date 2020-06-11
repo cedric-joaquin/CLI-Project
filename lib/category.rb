@@ -3,7 +3,7 @@ class Category
     @@all = []
 
     def initialize(category)
-        @name = category
+        @name = category.capitalize
         @@all << self
     end
 
@@ -13,6 +13,7 @@ class Category
 
     def self.sort
         @@all = @@all.sort_by{|cat| cat.name}
+
     end
 
     def self.all
