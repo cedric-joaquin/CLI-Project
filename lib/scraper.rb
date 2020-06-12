@@ -4,18 +4,13 @@ class Scraper
     def self.scrape_categories
         doc = Nokogiri::HTML(open("#{@@url}all"))
         categories = doc.css("ul#nav-categories li")
-        puts "Scraping Categories..."
         categories.each do |cat|
             name = cat.css("a").text
             Category.new(name) unless name == "all" || name == "new" || Category.all.detect {|a| a.name == name}
         end
-
-        Category.sort
     end
 
     def self.scrape_products(category)
-        puts "Scraping Products..."
-
         # Handles category "tops/sweaters" and creates the proper url for that category
         if category.include?("/")
             url = category.gsub("/","_")
@@ -45,6 +40,5 @@ class Scraper
             Product.new(name, category, price) unless Product.products.include?(name) || prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
             Product.all.detect{|product| product.name == name}.add_style(style) unless prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
         end
-        Product.sort
     end
 end
