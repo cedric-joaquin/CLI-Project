@@ -62,13 +62,7 @@ class Checkout
         puts "#{product.name} - #{style.to_s} - #{size} - #{product.price}"
         self.display_cart
 
-        puts "Would you like to continue shopping? (Y/N)"
-        input = gets.chomp.upcase
-        while input != "Y" && input != "N"
-            puts "Invalid response."
-            puts "Would you like to continue shopping? (Y/N)"
-            input = gets.chomp.upcase
-        end
+ 
     end
 
     def display_cart

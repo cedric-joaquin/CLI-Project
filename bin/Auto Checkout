@@ -8,7 +8,15 @@ cart = Checkout.new
 
 loop do
     cart.add_to_cart
-break if cart.add_to_cart == "N"
+
+    puts "Would you like to continue shopping? (Y/N)"
+    input = gets.chomp.upcase
+    while input != "Y" && input != "N"
+        puts "Invalid response."
+        puts "Would you like to continue shopping? (Y/N)"
+        input = gets.chomp.upcase
+    end
+break if input == "N"
 end
 
 
