@@ -2,6 +2,10 @@
 require "bundler/setup"
 require "../config/environment.rb"
 
+puts "Welcome to the Supreme Auto Checkout App!"
+cart = Checkout.new
+
+
 
 
 
