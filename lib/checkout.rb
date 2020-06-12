@@ -52,9 +52,9 @@ class Checkout
         size = product.styles.find{|a|a.keys[0] == style}[style][self.to_index(input)]
         
         @cart << {
-            :product => product.name
-            :style => style.to_s
-            :size => size
+            :product => product.name,
+            :style => style.to_s,
+            :size => size,
             :price => product.price.gsub("$","").to_i
         }
 
@@ -79,3 +79,4 @@ class Checkout
         puts "Successfully Checked Out!"
         self.empty_cart
     end
+end
