@@ -60,10 +60,11 @@ class Checkout
 
         puts "Successfully added to cart:"
         puts "#{product.name} - #{style.to_s} - #{size} - #{product.price}"
-
+        self.display_cart
     end
 
     def display_cart
+        puts "\nCart Summary:"
         @cart.each_with_index do |item, i| 
             puts "#{i+1}. #{item[:product]} - #{item[:style]} - #{item[:size]} - $#{item[:price].to_s}"
         end
@@ -78,4 +79,3 @@ class Checkout
         puts "Successfully Checked Out!"
         self.empty_cart
     end
-end
