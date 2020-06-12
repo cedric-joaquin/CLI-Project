@@ -12,19 +12,19 @@ class CLI
     end
 
     def self.display_styles(product)
-        puts "\nAvailable Styles for '#{product}"
-        Product.all.select{|a| a.name == product}.each do |prod|
-            prod.styles.collect.keys[0].each_with_index do |style, i|
+        puts "\nAvailable Styles for '#{product.name}:"
+        Product.all.select{|a| a.name == product.name}.each do |prod|
+            prod.styles.collect{|a| a.keys[0]}.each_with_index do |style, i|
                 puts "  #{i+1}. #{style.to_s}"
             end
         end
     end
 
     def self.display_sizes(product, style)
-        puts "\n Available Sizes for #{product} - #{style}"
-        Product.all.select{|a| a.name == product}.each do |prod|
+        puts "\nAvailable Sizes for #{product.name} - #{style}:"
+        Product.all.select{|a| a.name == product.name}.each do |prod|
             prod.styles.find{|a| a.has_key?(style)}[style].each_with_index do |size, i|
-                puts "  #{i+1}. #{size}."
+                puts "  #{i+1}. #{size}"
             end
         end
     end

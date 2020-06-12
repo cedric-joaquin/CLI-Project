@@ -1,9 +1,18 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
 require "../config/environment.rb"
+Scraper.scrape_categories
 
 puts "Welcome to the Supreme Auto Checkout App!"
 cart = Checkout.new
+
+loop do
+    cart.add_to_cart
+break if cart.add_to_cart == "N"
+end
+
+
+cart.display_cart
 
 
 
