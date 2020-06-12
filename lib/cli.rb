@@ -1,9 +1,4 @@
 class CLI
-
-    def self.to_index(input)
-        index = input - 1
-    end
-
     def self.display_categories
         puts "\nCategories:"
         Category.all.each_with_index {|cat, i| puts "  #{i+1}. #{cat.name}"}
@@ -18,16 +13,19 @@ class CLI
 
     def self.display_styles(product)
         puts "\nAvailable Styles for '#{product}"
-        Product.all.find{|a| a.name == product}.each do |prod|
-            prod.styles[:styles].each_with_index do |style, i|
-                puts "  #{i+1}. #{style}"
+        Product.all.select{|a| a.name == product}.each do |prod|
+            prod.styles.collect.keys[0].each_with_index do |style, i|
+                puts "  #{i+1}. #{style.to_s}"
             end
         end
     end
 
     def self.display_sizes(product, style)
         puts "\n Available Sizes for #{product} - #{style}"
-        Product.all.find{|a|a.styles}
+        Product.all.select{|a| a.name == product}.each do |prod|
+            prod.styles.find{|a| a.has_key?(style)}[style].each_with_index do |size, i|
+                puts "  #{i+1}. #{size}."
+            end
+        end
     end
-
 end
