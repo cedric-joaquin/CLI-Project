@@ -34,8 +34,9 @@ class Scraper
             else
                 sizes = doc.css("div#cctrl select option").collect{|options| options.text}
             end
+
                 price = doc.css("div#container p.price").text
-        
+                
             style = {
                 prod.css("div.product-style").text.to_sym => sizes,
                 :link => link
