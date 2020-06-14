@@ -12,7 +12,7 @@ class CLI
     end
 
     def self.display_styles(product)
-        puts "\nAvailable Styles for '#{product.name}:"
+        puts "\nAvailable Styles for #{product.name}:"
         Product.all.select{|a| a.name == product.name}.each do |prod|
             prod.styles.collect{|a| a.keys[0]}.each_with_index do |style, i|
                 puts "  #{i+1}. #{style.to_s}"

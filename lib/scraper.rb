@@ -23,7 +23,7 @@ class Scraper
         products = doc.css("ul#container li")
 
         products.each do |prod|
-            name = prod.css("div.product-name").text
+            name = prod.css("div.product-name").text.strip
             
             link = prod.css("div.product-style a").attr("href").value
             link = link.gsub("/shop","")
@@ -36,7 +36,7 @@ class Scraper
             end
 
                 price = doc.css("div#container p.price").text
-                
+
             style = {
                 prod.css("div.product-style").text.to_sym => sizes,
                 :link => link
