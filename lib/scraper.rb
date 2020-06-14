@@ -29,8 +29,12 @@ class Scraper
             link = link.gsub("/shop","")
 
             doc = Nokogiri::HTML(open(@@url + link))
-            sizes = doc.css("div#cctrl select option").collect{|options| options.text}
-            price = doc.css("div#container p.price").text
+            if doc.css("div#cctrl select option").collect{|options| options.text}.empty?
+                sizes = ["One Size"]
+            else
+                sizes = doc.css("div#cctrl select option").collect{|options| options.text}
+            end
+                price = doc.css("div#container p.price").text
         
             style = {
                 prod.css("div.product-style").text.to_sym => sizes,
