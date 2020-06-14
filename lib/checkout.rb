@@ -13,6 +13,20 @@ class Checkout
        @total = @cart.collect{|item|item[:price]}.inject(:+)
     end
 
+    def shop
+        loop do
+            self.add_to_cart
+            puts "Would you like to continue shopping? (Y) or Proceed to Checkout? (N)"
+            input = gets.chomp.upcase
+            while input != "Y" && input != "N"
+                puts "Invalid response."
+                puts "Would you like to continue shopping? (Y/N)"
+                input = gets.chomp.upcase
+            end
+        break if input == "N"
+        end
+    end
+
     def add_to_cart
         #Category Selection
         CLI.display_categories
@@ -80,6 +94,9 @@ class Checkout
     end
 
     def checkout
+        self.display_cart
+        puts "\nAttempting Checkout..."
+        sleep(rand()*3)
         puts "Successfully Checked Out!"
         self.empty_cart
     end

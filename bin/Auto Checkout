@@ -5,22 +5,9 @@ Scraper.scrape_categories
 
 puts "Welcome to the Supreme Auto Checkout App!"
 cart = Checkout.new
+cart.shop
+cart.checkout
 
-loop do
-    cart.add_to_cart
-
-    puts "Would you like to continue shopping? (Y/N)"
-    input = gets.chomp.upcase
-    while input != "Y" && input != "N"
-        puts "Invalid response."
-        puts "Would you like to continue shopping? (Y/N)"
-        input = gets.chomp.upcase
-    end
-break if input == "N"
-end
-
-
-cart.display_cart
 
 
 
