@@ -14,6 +14,7 @@ class Checkout
     end
 
     def add_to_cart
+        #Category Selection
         CLI.display_categories
         puts "\nSelect the numbered category you wish to shop:"
         input = gets.chomp.to_i
@@ -23,7 +24,8 @@ class Checkout
         end
         category = Category.all[(self.to_index(input))].name
         
-        Scraper.scrape_products(category)
+        #Product Selection
+        Scraper.scrape_products(category) unless Product.all.collect{|prod| prod.category}.include? (category)
         CLI.display_products(category)
         puts "\nSelect the numbered product you wish to add to cart:"
         input = gets.chomp.to_i
@@ -33,6 +35,7 @@ class Checkout
         end
         product = Product.select_by_category(category,self.to_index(input))
 
+        #Style Selection
         CLI.display_styles(product)
         puts "\nSelect the numbered style you wish to purchase:"
         input = gets.chomp.to_i
@@ -42,6 +45,7 @@ class Checkout
         end
         style = product.select_style(self.to_index(input))
         
+        #Size Selection
         CLI.display_sizes(product, style)
         puts "\nSelect the numbered size you wish to purchase:"
         input = gets.chomp.to_i
@@ -58,11 +62,9 @@ class Checkout
             :price => product.price.gsub("$","").to_i
         }
 
-        puts "Successfully added to cart:"
+        puts "\nSuccessfully added to cart:"
         puts "#{product.name} - #{style.to_s} - #{size} - #{product.price}"
         self.display_cart
-
- 
     end
 
     def display_cart

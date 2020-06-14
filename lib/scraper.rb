@@ -36,9 +36,11 @@ class Scraper
                 prod.css("div.product-style").text.to_sym => sizes,
                 :link => link
             }
-
-            Product.new(name, category, price) unless Product.products.include?(name) || prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
-            Product.all.detect{|product| product.name == name}.add_style(style) unless prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
+            
+            unless Product.products.include?(name) || prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
+                Product.new(name, category, price) 
+                Product.all.detect{|product| product.name == name}.add_style(style) 
+            end
         end
     end
 end
