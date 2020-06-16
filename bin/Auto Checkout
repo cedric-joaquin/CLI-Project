@@ -6,7 +6,7 @@ Scraper.scrape_categories
 puts "Welcome to the Supreme Auto Checkout App!"
 cart = Checkout.new
 cart.shop
-puts "Thank you for using the Supreme Auto Checkout App!"
+puts "\nThank you for using the Supreme Auto Checkout App!"
 
 
 
