@@ -1,5 +1,5 @@
 class Checkout
-    attr_accessor :cart, :total
+    attr_accessor :cart, :total, :status
     
     def initialize
         @cart = []
@@ -16,7 +16,7 @@ class Checkout
     def shop
         loop do
             self.add_to_cart 
-        break if "N"
+        break if self.status == "exit"
         end
     end
 
@@ -29,8 +29,8 @@ class Checkout
             input = gets.chomp.upcase
         end
 
-        if input == "Y"
-            self.add_to_cart
+        if input == "N"
+            self.status = "exit"
         end
     end
 
@@ -51,6 +51,7 @@ class Checkout
     end
 
     def add_to_cart
+        self.status = "shopping"
         #Category Selection
         CLI.display_categories
         puts "\nSelect the numbered category you wish to shop:"
@@ -63,9 +64,9 @@ class Checkout
         
         #Product Selection
         Scraper.scrape_products(category) unless Product.all.collect{|prod| prod.category}.include? (category)
-        if Product.all.collect{|prod| prod.category == category}.empty?
+        if Product.products_by_category(category).empty?
             puts "\nNo available products for this category."
-            return "Y"
+            self.status = "shopping"
         else
             CLI.display_products(category)
             puts "\nSelect the numbered product you wish to add to cart:"
@@ -105,9 +106,9 @@ class Checkout
 
             puts "\nSuccessfully added to cart:"
             puts "#{product.name} - #{style.to_s} - #{size} - #{product.price}"
+            self.display_cart
+            self.continue?
         end
-        self.display_cart
-        self.continue?
     end
 
     def display_cart
