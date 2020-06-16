@@ -15,17 +15,39 @@ class Checkout
 
     def shop
         loop do
-            self.add_to_cart
-            puts "Would you like to continue shopping? (Y) or Proceed to Checkout? (N)"
-            input = gets.chomp.upcase
-            while input != "Y" && input != "N"
-                puts "Invalid response."
-                puts "Would you like to continue shopping? (Y/N)"
-                input = gets.chomp.upcase
-            end
-        break if input == "N"
+            self.add_to_cart 
+        break if "N"
         end
-        self.checkout
+    end
+
+    def new_cart?
+        puts "\nWould you like to start a new cart? (Y) or exit? (N)"
+        input = gets.chomp.upcase
+        while input != "Y" && input != "N"
+            puts "\nInvalid response."
+            puts "Would you like to start a new cart? (Y) or exit? (N)"
+            input = gets.chomp.upcase
+        end
+
+        if input == "Y"
+            self.add_to_cart
+        end
+    end
+
+    def continue?
+        puts "\nWould you like to continue shopping? (Y) or proceed to checkout? (N)"
+        input = gets.chomp.upcase
+        while input != "Y" && input != "N"
+            puts "\nInvalid response."
+            puts "Would you like to continue shopping? (Y) or proceed to checkout? (N)"
+            input = gets.chomp.upcase
+        end
+        
+        if input == "N"
+            self.checkout
+        else
+            self.add_to_cart
+        end
     end
 
     def add_to_cart
@@ -83,8 +105,9 @@ class Checkout
 
             puts "\nSuccessfully added to cart:"
             puts "#{product.name} - #{style.to_s} - #{size} - #{product.price}"
-            self.display_cart
         end
+        self.display_cart
+        self.continue?
     end
 
     def display_cart
@@ -105,5 +128,6 @@ class Checkout
         sleep(rand()*3)
         puts "Successfully Checked Out!"
         self.empty_cart
+        self.new_cart?
     end
 end
