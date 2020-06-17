@@ -4,19 +4,7 @@ The Supreme Auto Checkout app lets you browse and "shop" the `https://www.suprem
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'CLI-Project'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install CLI-Project
+To run this app, download the repository to your computer and open the `Auto Checkout` file in `/bin/` in your terminal.
 
 ## Usage
 
