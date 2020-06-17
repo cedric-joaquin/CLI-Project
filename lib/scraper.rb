@@ -32,7 +32,7 @@ class Scraper
             if doc.css("div#cctrl select option").collect{|options| options.text}.empty?
                 sizes = ["One Size"]
             else
-                sizes = doc.css("div#cctrl select option").collect{|options| options.text}
+                sizes = doc.css("div#cctrl select#s option").collect{|options| options.text}
             end
 
                 price = doc.css("div#container p.price").text
