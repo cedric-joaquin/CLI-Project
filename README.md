@@ -1,4 +1,4 @@
-# CLI::Project
+# CLI Project - Supreme Auto Checkout App
 
 The Supreme Auto Checkout app lets you browse and "shop" the `https://www.supremenewyork.com/shop/all` website using a command line interface. The program scrapes the available products on the website and allows you to add the products to your cart and simulate a checkout.
 
@@ -33,4 +33,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CLI::Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cedric-joaquin/CLI-Project/CODE_OF_CONDUCT.md).
+Everyone interacting in the project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cedric-joaquin/CLI-Project/CODE_OF_CONDUCT.md).
