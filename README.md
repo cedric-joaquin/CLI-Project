@@ -14,7 +14,6 @@ Navigating the app is done by inputting the desired selection when given a list 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/cedric-joaquin/CLI-Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/cedric-joaquin/CLI-Project/CODE_OF_CONDUCT.md).
 
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
