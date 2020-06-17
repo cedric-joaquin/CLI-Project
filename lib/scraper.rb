@@ -42,8 +42,8 @@ class Scraper
                 :link => link
             }
             
-            unless Product.products.include?(name) || prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
-                Product.new(name, category, price) 
+            unless prod.css("div.inner-article a div.sold_out_tag").text == "sold out"
+                Product.new(name, category, price) if !Product.products.include?(name) 
                 Product.all.detect{|product| product.name == name}.add_style(style) 
             end
         end
