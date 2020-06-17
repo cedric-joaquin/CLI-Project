@@ -66,6 +66,8 @@ class Checkout
         Scraper.scrape_products(category) unless Product.all.collect{|prod| prod.category}.include? (category)
         if Product.products_by_category(category).empty?
             puts "\nNo available products for this category."
+            puts "Redirecting to main menu..."
+            sleep(1)
             self.status = "shopping"
         else
             CLI.display_products(category)
