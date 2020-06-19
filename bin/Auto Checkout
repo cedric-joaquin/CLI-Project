@@ -1,12 +1,9 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
 require "../config/environment.rb"
-Scraper.scrape_categories
 
-puts "Welcome to the Supreme Auto Checkout App!"
-cart = Checkout.new
-cart.shop
-puts "\nThank you for using the Supreme Auto Checkout App!"
+CLI.new.shop
+
 
 
 
