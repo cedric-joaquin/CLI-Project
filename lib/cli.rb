@@ -18,7 +18,6 @@ class CLI
     end
 
     def add_to_cart
-        cart = Cart.new
         self.status = "shopping"
         #Category Selection
         self.display_categories
