@@ -26,7 +26,7 @@ class CLI
             puts "\nInvalid selection, please select a valid category."
             input = gets.chomp.to_i
         end
-        category = Category.all[(CLI.to_index(input))].name
+        category = Category.select(CLI.to_index(input))
         
         #Product Selection
         Scraper.scrape_products(category) unless Product.all.collect{|prod| prod.category}.include? (category)

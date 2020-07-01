@@ -20,10 +20,6 @@ class Product
         self.styles[index].keys[0]
     end
 
-    def self.products
-        @@all.collect {|a| a.name}
-    end
-
     def self.select_by_category(category, index)
         self.products_by_category(category)[index]
     end
