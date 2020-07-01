@@ -34,7 +34,6 @@ class Scraper
             else
                 sizes = doc.css("div#cctrl select#s option").collect{|options| options.text}
             end
-
                 price = doc.css("div#container p.price").text
 
             style = {
