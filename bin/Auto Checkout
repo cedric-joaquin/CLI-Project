@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
-require "../config/environment.rb"
+require "../lib/environment.rb"
 
-CLI.new.shop
+Supreme::CLI.new.shop
 
 
 
