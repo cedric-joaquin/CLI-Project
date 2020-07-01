@@ -12,10 +12,6 @@ class Category
         self.all[index].name
     end
 
-    def self.categories
-        @@all.collect {|a| a.name}
-    end
-
     def self.all
         @@all
     end
