@@ -18,7 +18,6 @@ class CLI
     end
 
     def add_to_cart
-        self.status = "shopping"
         #Category Selection
         self.display_categories
         puts "\nSelect the numbered category you wish to shop:"
@@ -92,8 +91,17 @@ class CLI
         if input == "N"
             self.checkout
         else
-            self.add_to_cart
+            self.status = "shopping"
         end
+    end
+    
+    def checkout
+        self.display_cart
+        puts "\nAttempting Checkout..."
+        sleep(rand()*3)
+        puts "Successfully Checked Out!"
+        session.empty_cart
+        self.new_cart?
     end
 
     def new_cart?
@@ -109,7 +117,7 @@ class CLI
             self.status = "exit"
         end
     end
-
+    
     def display_cart
         puts "\nCart Summary:"
         session.contents.each_with_index do |item, i| 
@@ -118,14 +126,6 @@ class CLI
         puts "\nTotal: $#{session.total}"
     end
 
-    def checkout
-        self.display_cart
-        puts "\nAttempting Checkout..."
-        sleep(rand()*3)
-        puts "Successfully Checked Out!"
-        session.empty_cart
-        self.new_cart?
-    end
 
     def display_categories
         puts "\nCategories:"
